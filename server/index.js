@@ -48,7 +48,10 @@ app.get("/auth/callback", async (req, res) => {
       sameSite: "none",
     });
     if (tokens.refresh_token) {
-      res.cookie("refresh_token", tokens.refresh_token, { httpOnly: true });
+      res.cookie("refresh_token", tokens.refresh_token, {
+        secure: true,
+        sameSite: "none",
+      });
     }
 
     res.redirect("https://cal-connect.vercel.app/");
