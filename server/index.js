@@ -43,7 +43,10 @@ app.get("/auth/callback", async (req, res) => {
     const { tokens } = await oauth2Client.getToken(req.query.code);
     oauth2Client.setCredentials(tokens);
 
-    res.cookie("access_token", tokens.access_token, { httpOnly: true });
+    res.cookie("access_token", tokens.access_token, { 
+      secure: true,
+      sameSite: "none",
+    });
     if (tokens.refresh_token) {
       res.cookie("refresh_token", tokens.refresh_token, { httpOnly: true });
     }
