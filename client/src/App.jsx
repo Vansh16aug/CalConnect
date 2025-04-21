@@ -17,7 +17,9 @@ const App = () => {
   const fetchEvents = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:5000/events");
+      const res = await axios.get(
+        "https://whale-app-vmj8r.ondigitalocean.app/events"
+      );
       setEvents(res.data);
     } catch (err) {
       console.error("Fetch events error:", err);
@@ -32,7 +34,9 @@ const App = () => {
   const checkLogin = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:5000/status");
+      const res = await axios.get(
+        "https://whale-app-vmj8r.ondigitalocean.app/status"
+      );
       setLoggedIn(res.data.loggedIn);
       if (res.data.loggedIn) {
         fetchEvents();
@@ -46,12 +50,12 @@ const App = () => {
   };
 
   const handleAuth = () => {
-    window.location.href = "http://localhost:5000/auth";
+    window.location.href = "https://whale-app-vmj8r.ondigitalocean.app/auth";
   };
 
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:5000/logout");
+      await axios.get("https://whale-app-vmj8r.ondigitalocean.app/logout");
       setLoggedIn(false);
       setEvents([]);
     } catch (err) {

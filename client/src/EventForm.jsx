@@ -16,11 +16,14 @@ function EventForm({ onSuccess }) {
     setError("");
 
     try {
-      const res = await axios.post("http://localhost:5000/create-event", {
-        title,
-        dateTime,
-        addMeet,
-      });
+      const res = await axios.post(
+        "https://whale-app-vmj8r.ondigitalocean.app/create-event",
+        {
+          title,
+          dateTime,
+          addMeet,
+        }
+      );
 
       const { hangoutLink } = res.data;
       alert(`✅ Event Created!${hangoutLink ? "\nMeet: " + hangoutLink : ""}`);
