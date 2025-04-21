@@ -48,7 +48,7 @@ app.get("/auth/callback", async (req, res) => {
       res.cookie("refresh_token", tokens.refresh_token, { httpOnly: true });
     }
 
-    res.redirect("http://localhost:5173");
+    res.redirect("https://cal-connect.vercel.app/");
   } catch (err) {
     res.status(500).send("Authentication failed");
   }
